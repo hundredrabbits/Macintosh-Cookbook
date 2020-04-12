@@ -1,4 +1,4 @@
-program Julia;
+program ExampleJulia;
 
 {Program to compute and plot Julia set.}
 

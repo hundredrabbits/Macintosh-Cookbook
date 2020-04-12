@@ -1,4 +1,4 @@
-program IFS;
+program ExampleIFS;
 {Program to compute fractals using IFSs.}
 {Ref.: Barnsley, "Fractals Everywhere , p. 88}
  const

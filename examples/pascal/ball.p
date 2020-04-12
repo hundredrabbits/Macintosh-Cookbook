@@ -1,4 +1,4 @@
-program Bouncing_Ball;
+program ExampleBall;
  const
   PICTURE_HEIGHT = 100;
   PICTURE_WIDTH = 400;

@@ -1,4 +1,4 @@
-program Magic_Pen;
+program ExamplePen;
 
  var
   x, y: integer;

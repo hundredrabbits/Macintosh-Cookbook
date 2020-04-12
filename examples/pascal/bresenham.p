@@ -1,4 +1,4 @@
-program Bresenham;
+program ExampleBresenham;
     {Program to draw a straight }
     { line from (x1,y1) to (x2,y2) }
     {using Bresenham's Algorithm }
