@@ -1,4 +1,4 @@
-program Hello;
+program ExampleLogic;
 
   {Comment}
 

@@ -1,4 +1,4 @@
-program forLoop;
+program ExampleLoop;
  var
   a: integer;
 

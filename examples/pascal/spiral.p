@@ -1,4 +1,4 @@
-program Pattern;
+program ExampleSprial;
 
   {Program to build spiral pattern, using}
   {relative line routine in a recursive loop}

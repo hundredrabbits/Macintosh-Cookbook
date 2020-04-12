@@ -1,4 +1,4 @@
-program Recurse;
+program ExampleRecurse;
 
  var
   i, left, top, right, bottom: integer;

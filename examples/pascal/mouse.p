@@ -1,4 +1,4 @@
-program ButtonEvents;
+program ExampleMouse;
 
  var
   tic1, tic2: longint;

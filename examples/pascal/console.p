@@ -1,4 +1,4 @@
-program Greetings;
+program ExampleConsole;
 
  const
   message = ' Welcome to the world of Pascal ';

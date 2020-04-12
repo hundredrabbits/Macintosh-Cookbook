@@ -1,4 +1,4 @@
-program Example;
+program ExampleFunction;
  var
   a, b, ret: integer;
 

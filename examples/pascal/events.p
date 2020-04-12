@@ -1,4 +1,4 @@
-program ButtonEvents;
+program ExampleEvents;
 {Program to demonstrate detection of button events }
 {and use of button for program control. }
 

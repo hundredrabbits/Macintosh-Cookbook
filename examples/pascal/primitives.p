@@ -1,4 +1,4 @@
-program Primitives;
+program ExamplePrimitives;
 
   {Program to demonstrate Pascal point & line primitives.}
 

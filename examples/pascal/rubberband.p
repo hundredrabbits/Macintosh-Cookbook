@@ -1,4 +1,4 @@
-program RubberBand;
+program ExampleRubberBand;
 
 {Program to demonstrate Rubber Band technique}
 {for constructing graphical objects }

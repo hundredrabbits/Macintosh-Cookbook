@@ -1,4 +1,4 @@
-program Test;
+program ExampleGui;
 
  var
   w: WindowPtr; {A window to draw in}
