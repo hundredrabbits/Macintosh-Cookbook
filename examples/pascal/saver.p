@@ -1,4 +1,4 @@
-program saver;
+program ExampleSaver;
 
  type
   Collider = object
@@ -19,27 +19,23 @@ program saver;
   new(bounds);
   bounds.w := 420;
   bounds.h := 320;
-
   setRect(view, 100, 100, bounds.w + 120, bounds.h + 120);
   setDrawingRect(view);
   PenSize(1, 1);
   ShowDrawing;
   frame := 0;
-
   new(p1);
   p1.x := Random mod bounds.w + 220;
   p1.y := Random mod bounds.h + 120;
   p1.speed := 3.5;
   p1.dx := p1.speed;
   p1.dy := p1.speed;
-
   new(p2);
   p2.x := Random mod bounds.w + 220;
   p2.y := Random mod bounds.h + 120;
   p2.speed := 6.5;
   p2.dx := -p2.speed;
   p2.dy := p2.speed;
-
   new(p3);
   p3.x := Random mod bounds.w + 220;
   p3.y := Random mod bounds.h + 120;

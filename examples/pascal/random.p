@@ -1,7 +1,10 @@
-program Ran;
+program ExampleRandom;
+
  var
   x, ps, start1, start2, endpt1, endpt2: integer;
+
 begin
+
  for x := 1 to 20 do
   begin
    ps := Random mod 10;
@@ -13,4 +16,5 @@ begin
    moveto(start1 + 200, start2 + 100);
    lineto(endpt1 + 200, endpt2 + 100);
   end
+
 end.

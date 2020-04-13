@@ -1,9 +1,12 @@
 program ExampleRings;
+
  var
   Top, Left, Bottom, Right: Integer;
   Diam, Increase: Integer;
   Box: Rect;
+
 begin
+
  Top := 0;
  Left := 0;
  Diam := 0;
@@ -17,4 +20,5 @@ begin
   setRect(box, Left, Top, Right, Bottom);
   FrameOval(box);
  until Diam > 400
+ 
 end.

@@ -1,10 +1,9 @@
 program ExampleRubberBand;
 
-{Program to demonstrate Rubber Band technique}
-{for constructing graphical objects }
  var
   x1, y1, x2, y2: integer;
   p: point;
+
 begin
 
  ShowDrawing; {Open Drawing Window}
@@ -40,4 +39,4 @@ begin
 
  until (x1 < 0) and Button {Exit by clicking left}
 
-end. {of Drawing Window}
+end.

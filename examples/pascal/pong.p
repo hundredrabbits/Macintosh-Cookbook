@@ -1,4 +1,4 @@
-program PaddleBall;
+program ExamplePong;
 
  var
   Ball, Paddle, Top, Bottom, Left, Right, TempRect: Rect;
