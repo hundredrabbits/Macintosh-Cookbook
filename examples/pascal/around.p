@@ -1,8 +1,15 @@
 program ExampleAround;
  var
   count, countup, countdown: integer;
+  box: rect;
 begin
+
+{ Create the window rect }
+ setRect(box, 100, 100, 320, 320);
+ SetDrawingRect(box);
  ShowDrawing;
+
+{ Draw lines }
  for count := 0 to 20 do
   begin
    countup := count * 4;
