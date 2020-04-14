@@ -3,12 +3,12 @@ program EulerSpiral;
   l = 4;
   a = 11;
  var
-  ax, ay, bx, by: real;
+  ax, ay: real;
   wx, wy, wa: real;
   i: integer;
  procedure lineAngle;
   var
-   bx, by, t: real;
+   t: real;
  begin
   moveTo(round(wx), round(wy));
   t := wa * PI / 180;
