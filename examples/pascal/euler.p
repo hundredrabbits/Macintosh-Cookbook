@@ -3,7 +3,6 @@ program EulerSpiral;
   l = 4;
   a = 11;
  var
-  ax, ay: real;
   wx, wy, wa: real;
   i: integer;
  procedure lineAngle;
