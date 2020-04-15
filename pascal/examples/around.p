@@ -1,7 +1,9 @@
 program ExampleAround;
+
  var
   count, countup, countdown: integer;
   box: rect;
+
 begin
 
 { Create the window rect }
@@ -20,4 +22,5 @@ begin
    lineto(0, countdown);
    lineto(countup, 0);
   end
+  
 end.
