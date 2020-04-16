@@ -1,0 +1,222 @@
+<h1>Summary of QuickDraw Drawing</h1>
+<pre>
+srcCopy        = 0;  {where source pixel is black, force destination }
+{ pixel black; where source pixel is white, force }
+{ destination pixel white}
+srcOr          = 1;  {where source pixel is black, force destination }
+{ pixel black; where source pixel is white, leave }
+{ destination pixel unaltered}
+srcXor         = 2;  {where source pixel is black, invert destination }
+{ pixel; where source pixel is white, leave }
+{ destination pixel unaltered}
+srcBic         = 3;  {where source pixel is black, force destination }
+{ pixel white; where source pixel is white, leave }
+{ destination pixel unaltered}
+notSrcCopy     = 4;  {where source pixel is black, force destination }
+{ pixel white; where source pixel is white, force }
+{ destination pixel black}
+notSrcOr       = 5;  {where source pixel is black, leave destination }
+{ pixel unaltered; where source pixel is white, }
+{ force destination pixel black}
+notSrcXor      = 6;  {where source pixel is black, leave destination }
+{ pixel unaltered; where source pixel is white, }
+{ invert destination pixel}
+notSrcBic      = 7;  {where source pixel is black, leave destination }
+{ pixel unaltered; where source pixel is white, }
+{ force destination pixel white}
+
+{pattern modes}
+patCopy        = 8;  {where pattern pixel is black, apply foreground }
+{ color to destination pixel; where pattern pixel }
+{ is white, apply background color to destination }
+{ pixel}
+patOr          = 9;  {where pattern pixel is black, invert destination }
+{ pixel; where pattern pixel is white, leave }
+{ destination pixel unaltered}
+patXor         = 10; {where pattern pixel is black, invert destination }
+{ pixel; where pattern pixel is white, leave }
+{ destination pixel unaltered}
+patBic         = 11; {where pattern pixel is black, apply background }
+{ color to destination pixel; where pattern pixel }
+{ is white, leave destination pixel unaltered}
+notPatCopy     = 12; {where pattern pixel is black, apply background }
+{ color to destination pixel; where pattern pixel }
+{ is white, apply foreground color to destination }
+{ pixel}
+notPatOr       = 13; {where pattern pixel is black, leave destination }
+{ pixel unaltered; where pattern pixel is white, }
+{ apply foreground color to destination pixel}
+notPatXor      = 14; {where pattern pixel is black, leave destination }
+{ pixel unaltered; where pattern pixel is white, }
+{ invert destination pixel}
+notPatBic      = 15; {where pattern pixel is black, leave destination }
+{ pixel unaltered; where pattern pixel is white, }
+{ apply background color to destination pixel}
+ditherCopy     = 64; {add to source mode for dithering}
+</pre>
+
+<h3>Routines</h3>
+<h4>Managing the Graphics Pen</h4>
+
+<pre>PROCEDURE HidePen;
+  PROCEDURE ShowPen;
+  PROCEDURE GetPen        (VAR pt: Point);
+  PROCEDURE GetPenState   (VAR pnState: PenState);
+  PROCEDURE SetPenState   (pnState: PenState);
+  PROCEDURE PenSize       (width,height: Integer);
+  PROCEDURE PenMode       (mode: Integer);
+  PROCEDURE PenPat        (pat: Pattern);
+  PROCEDURE PenNormal;
+</pre>
+
+<h4>Changing the Background Bit Pattern</h4>
+<pre>PROCEDURE BackPat       (pat: Pattern); 
+</pre>
+
+<h4>Drawing Lines</h4>
+<pre>PROCEDURE MoveTo        (h,v: Integer);
+  PROCEDURE Move          (dh,dv: Integer);
+  PROCEDURE LineTo        (h,v: Integer);
+  PROCEDURE Line          (dh,dv: Integer);
+</pre>
+
+<h4>Creating and Managing Rectangles</h4>
+<pre>PROCEDURE SetRect       (VAR r: Rect; left,top,right,bottom: Integer);
+PROCEDURE OffsetRect    (VAR r: Rect; dh,dv: Integer);
+PROCEDURE InsetRect     (VAR r: Rect; dh,dv: Integer);
+PROCEDURE UnionRect     (src1,src2: Rect; VAR dstRect: Rect);
+PROCEDURE Pt2Rect       (pt1,pt2: Point; VAR dstRect: Rect);
+PROCEDURE PtToAngle     (r: Rect; pt: Point; VAR angle: Integer);
+FUNCTION SectRect       (src1,src2: Rect; VAR dstRect: Rect): Boolean;
+FUNCTION PtInRect       (pt: Point; r: Rect): Boolean;
+FUNCTION EqualRect      (rect1,rect2: Rect): Boolean;
+FUNCTION EmptyRect      (r:  Rect): Boolean;
+</pre>
+
+<h4>Drawing Rectangles</h4>
+<pre>PROCEDURE FrameRect     (r: Rect);
+PROCEDURE PaintRect     (r: Rect);
+PROCEDURE FillRect      (r: Rect; pat: Pattern);
+PROCEDURE EraseRect     (r: Rect);
+PROCEDURE InvertRect    (r: Rect);
+</pre>
+
+<h4>Drawing Rounded Rectangles</h4>
+<pre>PROCEDURE FrameRoundRect  (r: Rect; ovalWidth,ovalHeight: Integer);
+PROCEDURE PaintRoundRect  (r: Rect; ovalWidth,ovalHeight: Integer);
+PROCEDURE FillRoundRect   (r: Rect; ovalWidth,ovalHeight: Integer; pat: Pattern);
+PROCEDURE EraseRoundRect  (r: Rect; ovalWidth,ovalHeight: Integer);
+PROCEDURE InvertRoundRect (r: Rect; ovalWidth,ovalHeight: Integer);
+</pre>
+
+<h4>Drawing Ovals</h4>
+<pre>PROCEDURE FrameOval     (r: Rect);
+PROCEDURE PaintOval     (r: Rect);
+PROCEDURE FillOval      (r: Rect; pat: Pattern);
+PROCEDURE EraseOval     (r: Rect);
+PROCEDURE InvertOval    (r: Rect);
+</pre>
+
+<h4>Drawing Arcs and Wedges</h4>
+<pre>PROCEDURE FrameArc      (r: Rect; startAngle,arcAngle: Integer);
+PROCEDURE PaintArc      (r: Rect; startAngle,arcAngle: Integer);
+PROCEDURE FillArc       (r: Rect; startAngle,arcAngle: Integer; pat: Pattern);
+PROCEDURE EraseArc      (r: Rect; startAngle,arcAngle: Integer);
+PROCEDURE InvertArc     (r: Rect; startAngle,arcAngle: Integer);
+</pre>
+
+<h4>Creating and Managing Polygons</h4>
+<pre>FUNCTION OpenPoly  : PolyHandle;
+PROCEDURE ClosePoly;
+PROCEDURE OffsetPoly    (poly: PolyHandle; dh,dv: Integer);
+PROCEDURE KillPoly      (poly: PolyHandle);
+</pre>
+
+<h4>Drawing Polygons</h4>
+<pre>PROCEDURE FramePoly     (poly: PolyHandle);
+PROCEDURE PaintPoly     (poly: PolyHandle);
+PROCEDURE FillPoly      (poly: PolyHandle; pat: Pattern);
+PROCEDURE ErasePoly     (poly: PolyHandle);
+PROCEDURE InvertPoly    (poly: PolyHandle);
+</pre>
+
+<h4>Creating and Managing Regions</h4>
+<pre>FUNCTION NewRgn : RgnHandle;
+PROCEDURE OpenRgn;
+PROCEDURE CloseRgn      (dstRgn: rgnHandle);
+PROCEDURE DisposeRgn    (rgn: RgnHandle);
+PROCEDURE CopyRgn       (srcRgn,dstRgn: RgnHandle);
+PROCEDURE SetEmptyRgn   (rgn: RgnHandle);
+PROCEDURE SetRectRgn    (rgn: RgnHandle; left,top,right,bottom: Integer);
+PROCEDURE RectRgn       (rgn: RgnHandle; r: Rect);
+PROCEDURE OffsetRgn     (rgn: RgnHandle; dh,dv: Integer);
+PROCEDURE InsetRgn      (rgn: RgnHandle; dh,dv: Integer);
+PROCEDURE SectRgn       (srcRgnA,srcRgnB,dstRgn: RgnHandle);
+PROCEDURE UnionRgn      (srcRgnA,srcRgnB,dstRgn: RgnHandle);
+PROCEDURE DiffRgn       (srcRgnA,srcRgnB,dstRgn: RgnHandle);
+PROCEDURE XorRgn        (srcRgnA,srcRgnB,dstRgn: RgnHandle);
+FUNCTION PtInRgn        (pt: Point; rgn: RgnHandle): Boolean;
+FUNCTION RectInRgn      (r: Rect; rgn: RgnHandle): Boolean;
+FUNCTION EqualRgn       (rgnA,rgnB: RgnHandle): Boolean;
+FUNCTION EmptyRgn       (rgn: RgnHandle): Boolean;
+</pre>
+
+<h4>Drawing Regions</h4>
+<pre>PROCEDURE FrameRgn      (rgn: RgnHandle);
+PROCEDURE PaintRgn      (rgn: RgnHandle);
+PROCEDURE FillRgn       (rgn: RgnHandle; pat: Pattern);
+PROCEDURE EraseRgn      (rgn: RgnHandle);
+PROCEDURE InvertRgn     (rgn: RgnHandle);
+</pre>
+
+<h4>Scaling and Mapping Points, Rectangles, Polygons, and Regions</h4>
+<pre>PROCEDURE ScalePt       (VAR pt: Point; srcRect,dstRect: Rect);
+PROCEDURE MapPt         (VAR pt: Point; srcRect,dstRect: Rect);
+PROCEDURE MapRect       (VAR r: Rect; srcRect,dstRect: Rect);
+PROCEDURE MapRgn        (rgn: RgnHandle; srcRect,dstRect: Rect);
+PROCEDURE MapPoly       (poly: PolyHandle; srcRect,dstRect: Rect);
+</pre>
+
+<h4>Calculating Black-and-White Fills</h4>
+<pre>PROCEDURE SeedFill      (srcPtr,dstPtr: Ptr; srcRow,dstRow,height,words,seedH,seedV: Integer);
+PROCEDURE CalcMask      (srcPtr,dstPtr: Ptr; srcRow,dstRow,height,words: Integer);
+</pre>
+
+<h4>Copying Images</h4>
+<pre>PROCEDURE CopyBits      (srcBits,dstBits: BitMap; srcRect,dstRect: Rect; mode: Integer; maskRgn: RgnHandle);
+PROCEDURE CopyMask      (srcBits,maskBits,dstBits: BitMap; srcRect,maskRect,dstRect: Rect);
+PROCEDURE CopyDeepMask  (srcBits: BitMap; maskBits: BitMap; dstBits: BitMap; srcRect: Rect; maskRect: Rect; dstRect: Rect; mode: Integer; maskRgn: RgnHandle);
+</pre>
+
+<h4>Drawing With the Eight-Color System</h4>
+
+<pre>PROCEDURE ForeColor     (color: LongInt);
+PROCEDURE BackColor     (color: LongInt);
+PROCEDURE ColorBit      (whichBit: Integer);
+</pre>
+
+<h4>Determining Whether QuickDraw Has Finished Drawing</h4>
+<pre>FUNCTION QDDone         (port: GrafPtr): Boolean;
+</pre>
+
+<h4>Getting Pattern Resources</h4>
+<pre>FUNCTION GetPattern     (patID: Integer): PatHandle;
+PROCEDURE GetIndPattern (VAR thePattern: Pattern; patListID: Integer; index: Integer);
+</pre>
+
+<h4>Customizing QuickDraw Operations</h4>
+<pre>PROCEDURE SetStdProcs   (VAR procs: QDProcs);
+PROCEDURE StdText       (byteCount: Integer; textBuf: Ptr; numer,denom: Point);
+PROCEDURE StdLine       (newPt: Point);
+PROCEDURE StdRect       (verb: GrafVerb; r: Rect);
+PROCEDURE StdRRect      (verb: GrafVerb; r: Rect; ovalwidth,ovalHeight: Integer);
+PROCEDURE StdOval       (verb: GrafVerb; r: Rect);
+PROCEDURE StdArc        (verb: GrafVerb; r: Rect; startAngle,arcAngle: Integer);
+PROCEDURE StdPoly       (verb: GrafVerb; poly: PolyHandle);
+PROCEDURE StdRgn        (verb: GrafVerb; rgn: RgnHandle);
+PROCEDURE StdBits       (VAR srcBits: BitMap; VAR srcRect,dstRect: Rect; mode: Integer; maskRgn: RgnHandle);
+PROCEDURE StdComment    (kind,dataSize: Integer; dataHandle: Handle);
+FUNCTION StdTxtMeas     (byteCount: Integer; textAddr: Ptr; VAR numer, denom: Point; VAR info: FontInfo): Integer;
+PROCEDURE StdGetPic     (dataPtr: Ptr; byteCount: Integer);
+PROCEDURE StdPutPic     (dataPtr: Ptr; byteCount: Integer);
+</pre>
