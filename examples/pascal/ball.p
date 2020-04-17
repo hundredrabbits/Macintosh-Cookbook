@@ -41,4 +41,3 @@ begin {bouncing ball}
   Draw_Ball(round(Vertical_Position));
  until Horizontal_Position >= PICTURE_WIDTH;
 end.
-end.
