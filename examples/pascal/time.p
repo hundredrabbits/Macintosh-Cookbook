@@ -1,15 +1,18 @@
 program ExampleTime;
 
  var
-  val: LongInt;
+  date: DateTimeRec;
+  seconds: longint;
 
 begin
 
  ShowText;
- GetDateTime(val);
- writeln(val);
+ GetTime(date);
+ GetDateTime(seconds);
+ writeln('The current time is:');
+ writeln(date.hour : 2, ':', date.minute : 2, ':', date.second : 2);
+ writeln;
+ writeln('Seconds since midnight, January 1, 1904:');
+ writeln(-seconds);
 
 end.
-
-{ note: The GetDateTime procedure sets the current date and time }
-{ The longint is the number of seconds since midnight, January 1, 1904 }
