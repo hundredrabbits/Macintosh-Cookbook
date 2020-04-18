@@ -4,12 +4,12 @@ program Rabbits;
   var
    bounds: Rect;
  begin
-  setRect(bounds, col * size + pad, row * size + pad, (col * size + pad) + 8, (row * size + pad) + 8);
+  SetRect(bounds, col * size + pad, row * size + pad, (col * size + pad) + 8, (row * size + pad) + 8);
   paintOval(bounds);
  end;
 
  var
-  row, col: integer;
+  row, col: Integer;
 
 begin
 

@@ -3,10 +3,10 @@ program ExampleBresenham;
     { line from (x1,y1) to (x2,y2) }
     {using Bresenham's Algorithm }
  var
-  i, irange, xp, yp, dxs, dys: integer;
-  x1, y1, x2, y2: real;
-  dx, dy, x, y, range: real;
-  errp: real;
+  i, irange, xp, yp, dxs, dys: Integer;
+  x1, y1, x2, y2: Real;
+  dx, dy, x, y, range: Real;
+  errp: Real;
   axis: char;
  procedure point (x, y: integer);
     {Procedure to plot point at (x,y)}
@@ -16,11 +16,11 @@ program ExampleBresenham;
  end;
 begin
     {Query the user for two points}
- writeln('Bresenham''s Straight-Line Algorithm');
- writeln('Input point 1 (x1,y1):');
- readln(x1, y1);
- writeln('Input point 2 (x2,y2):');
- readln(x2, y2);
+ Writeln('Bresenham''s Straight-Line Algorithm');
+ Writeln('Input point 1 (x1,y1):');
+ Readln(x1, y1);
+ Writeln('Input point 2 (x2,y2):');
+ Readln(x2, y2);
  range := abs(x2 - x1);
  axis := 'x';
         {Test for axis of more rapid motion}
@@ -43,7 +43,7 @@ begin
   dys := -1;
  xp := round(x1);
  yp := round(y1);
- showDrawing;
+ ShowDrawing;
     {This part steps along x axis}
  case axis of
   'x': 

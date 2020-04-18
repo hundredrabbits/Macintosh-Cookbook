@@ -7,12 +7,12 @@ program ExampleJulia;
   R = 10;
  type
   complex = record
-    r: real;
+    r: Real;
     i: real
    end;
  var
-  i, j, k, n, row, col, Nit: integer;
-  x, y: real;
+  i, j, k, n, row, col, Nit: Integer;
+  x, y: Real;
   z, znew, c: complex;
   done, gone: Boolean;
  procedure prod (a, b: complex; var c: complex);

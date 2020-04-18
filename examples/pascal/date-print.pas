@@ -5,7 +5,7 @@ program ExampleDate;
     Month: string[8];
     Dayname: string[9];
     Day: 1..31;
-    Year: integer;
+    Year: Integer;
     Time: longint
    end;
 
@@ -13,7 +13,7 @@ program ExampleDate;
   Access_Date: Date;
   Temp_Date: DateTimeRec;
 
- function Present_Month (Number: integer): string;
+ function Present_Month (Number: integer): String;
  begin
   case Number of
    1: 
@@ -43,7 +43,7 @@ program ExampleDate;
   end;
  end;
 
- function Present_Dayname (Number: integer): string;
+ function Present_Dayname (Number: integer): String;
  begin
   case Number of
    1: 
@@ -77,13 +77,13 @@ program ExampleDate;
    Hour, Minute, Second: Integer;
  begin
 { date }
-  write(In_Date.dayname, ', ', In_Date.Month);
-  writeln(In_Date.Day : 3, ', ', In_Date.Year : 4);
+  Write(In_Date.dayname, ', ', In_Date.Month);
+  Writeln(In_Date.Day : 3, ', ', In_Date.Year : 4);
 { time }
   Hour := 12 + In_Date.Time div 10000;
   Minute := (In_Date.Time - Hour * 10000) div 100;
   Second := In_Date.Time - (Hour * 10000 + Minute * 100);
-  writeln(hour : 2, ':', Minute : 2, ':', Second : 2);
+  Writeln(hour : 2, ':', Minute : 2, ':', Second : 2);
  end;
 
 begin

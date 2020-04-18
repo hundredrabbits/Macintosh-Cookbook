@@ -4,7 +4,7 @@ program ExampleSine;
   PI = 3.141592654;
   AMP = 50;
  var
-  x, y: real;
+  x, y: Real;
 
 begin
 
@@ -13,8 +13,8 @@ begin
 
  repeat
   y := sin((x / 300) * (2 * PI)) * AMP;
-  moveTo(round(x), AMP + round(y));
-  lineTo(round(x), AMP + round(y));
+  MoveTo(round(x), AMP + round(y));
+  LineTo(round(x), AMP + round(y));
   x := x + 1;
  until x > 400
 

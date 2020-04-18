@@ -1,12 +1,12 @@
 program ExampleRecurse;
 
  var
-  i, left, top, right, bottom: integer;
+  i, left, top, right, bottom: Integer;
   box: rect;
 
 begin
 
- showDrawing;
+ ShowDrawing;
  PenSize(9, 9);
  PenMode(patXor);
 

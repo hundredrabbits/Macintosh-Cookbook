@@ -1,17 +1,17 @@
 program ExampleString;
 
  var
-  foo: string;
+  foo: String;
 
 begin
 
  foo := 'foo';
- writeln(foo);
+ Writeln(foo);
 
  foo[1] := 'b';
  foo[2] := 'a';
  foo[3] := 'r';
 
- writeln(foo); { outputs: bar }
+ Writeln(foo); { outputs: bar }
 
 end.

@@ -6,11 +6,11 @@ program ExampleCircle;
    end;
 
  var
-  r: real;
+  r: Real;
 
  procedure circle (r: real);
   var
-   theta, thinc: real;
+   theta, thinc: Real;
    i: Integer;
    pt: Vector2;
  begin
@@ -30,8 +30,8 @@ program ExampleCircle;
 
 begin
 
- writeln('Radius:');
- readln(r);
+ Writeln('Radius:');
+ Readln(r);
  circle(r);
 
 end.

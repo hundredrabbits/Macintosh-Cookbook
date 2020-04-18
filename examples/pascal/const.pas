@@ -1,16 +1,18 @@
 program const_circle (input,output);
 
-const
-PI = 3.141592654;
+ const
+  PI = 3.141592654;
 
-var
-r, d, c : real;   {variable declaration: radius, dia, circumference}
+ var
+  r, d, c : Real;   {variable declaration: radius, dia, circumference}
 
 begin
-  writeln('Enter the radius of the circle');
-  readln(r);
+
+  Writeln('Enter the radius of the circle');
+  Readln(r);
 
   d := 2 * r;
   c :=  PI * d;
-  writeln('The circumference of the circle is ',c:7:2);
+  Writeln('The circumference of the circle is ',c:7:2);
+
 end.

@@ -19,7 +19,7 @@ program ExampleBall;
   Left := Horizontal_Position - BALL_SIZE;
   Bottom := COURT_LEVEL - Vertical_Position + BALL_SIZE;
   Right := Horizontal_Position + BALL_SIZE;
-  setRect(box, Left, Top, Right, Bottom);
+  SetRect(box, Left, Top, Right, Bottom);
   FrameOval(box);
  end;
 

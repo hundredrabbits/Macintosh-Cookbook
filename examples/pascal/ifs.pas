@@ -5,13 +5,13 @@ program ExampleIFS;
   pixdim = 120;
  type
   pic = array[1..pixdim, 1..pixdim] of Boolean;
-  vec = array[1..4] of real;
-  dimvec = array[1..4] of integer;
+  vec = array[1..4] of Real;
+  dimvec = array[1..4] of Integer;
  var
   s, t: pic;
   a, b, c, d, e, f, p: vec;
   x, y: dimvec;
-  i, j, k, dpix: integer;
+  i, j, k, dpix: Integer;
   box: rect;
 
 {********** Pset **************}
@@ -26,7 +26,7 @@ program ExampleIFS;
  procedure DefineObject (var t: pic);
 {Procedure to define initial graphical object}
   var
-   i, j: integer;
+   i, j: Integer;
  begin
 {Initialize object to an upper half-diagonal square.}
   for i := 1 to pixdim do
@@ -43,7 +43,7 @@ program ExampleIFS;
  procedure SetCoef (var a, b, c, d, e, f: vec);
 {Procedure to set up coefficient of affine transform.}
   var
-   i: integer;
+   i: Integer;
  begin {Set problem parameters for Sierpinski triangle.}
   for i := 1 to 3 do
    begin

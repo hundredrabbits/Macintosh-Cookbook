@@ -5,17 +5,17 @@ program ExampleScale;
 
 begin
 
- showDrawing;
+ ShowDrawing;
 
 { origine }
- setRect(clip, 10, 10, 100, 100);
- paintArc(clip, 0, 180);
- frameRect(clip);
+ SetRect(clip, 10, 10, 100, 100);
+ PaintArc(clip, 0, 180);
+ FrameRect(clip);
 
 { scale }
- eraseArc(clip, 0, 180);
- insetRect(clip, 20, 20);
- paintArc(clip, 0, 180);
- frameRect(clip);
+ EraseArc(clip, 0, 180);
+ InsetRect(clip, 20, 20);
+ PaintArc(clip, 0, 180);
+ FrameRect(clip);
 
 end.

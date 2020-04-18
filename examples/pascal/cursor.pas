@@ -6,7 +6,7 @@ program Showing_Cursors (input, output);
  var
   Rectangle: Rect_Table;
   Window: Port;
-  J: integer;
+  J: Integer;
   Area: array[1..3] of RgnHandle;
   Smile, Frown, Justso: Cursor;
   Mousepoint: Point;
@@ -32,7 +32,7 @@ program Showing_Cursors (input, output);
 
  procedure Pushbutton;
   var
-   Time: longint;
+   Time: Longint;
  begin
 
   while not Button do { nothing }

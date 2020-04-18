@@ -1,7 +1,7 @@
 program ExampleRubberBand;
 
  var
-  x1, y1, x2, y2: integer;
+  x1, y1, x2, y2: Integer;
   p: point;
 
 begin

@@ -2,10 +2,10 @@ program ExampleSaver;
 
  type
   Collider = object
-    x, y, dx, dy, speed: real;
+    x, y, dx, dy, speed: Real;
    end;
   Size = object
-    w, h: integer;
+    w, h: Integer;
    end;
 
  var
@@ -19,7 +19,7 @@ program ExampleSaver;
   new(bounds);
   bounds.w := 420;
   bounds.h := 320;
-  setRect(view, 100, 100, bounds.w + 120, bounds.h + 120);
+  SetRect(view, 100, 100, bounds.w + 120, bounds.h + 120);
   setDrawingRect(view);
   PenSize(1, 1);
   ShowDrawing;

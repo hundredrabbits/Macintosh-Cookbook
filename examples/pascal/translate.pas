@@ -5,17 +5,17 @@ program ExampleTranslate;
 
 begin
 
- showDrawing;
+ ShowDrawing;
 
 { origine }
- setRect(clip, 10, 10, 100, 100);
- paintArc(clip, 0, 180);
- frameRect(clip);
+ SetRect(clip, 10, 10, 100, 100);
+ PaintArc(clip, 0, 180);
+ FrameRect(clip);
 
 { translation }
- eraseArc(clip, 0, 180);
- offsetRect(clip, 40, 40);
- paintArc(clip, 0, 180);
- frameRect(clip);
+ EraseArc(clip, 0, 180);
+ OffSetRect(clip, 40, 40);
+ PaintArc(clip, 0, 180);
+ FrameRect(clip);
 
 end.

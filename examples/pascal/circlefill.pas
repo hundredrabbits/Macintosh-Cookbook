@@ -2,7 +2,7 @@ program ExampleCircleFill;
 
  procedure fillcircle (xc, yc, radius: integer);
   var
-   x, y: integer;
+   x, y: Integer;
  begin
   for y := -radius to radius do
    begin

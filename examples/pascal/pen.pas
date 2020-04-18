@@ -1,7 +1,7 @@
 program ExamplePen;
 
  var
-  x, y: integer;
+  x, y: Integer;
   Pt: Point;
 
 begin

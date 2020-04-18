@@ -3,7 +3,7 @@ program ExampleEvents;
 {and use of button for program control. }
 
  var
-  tic1, tic2: longint;
+  tic1, tic2: Longint;
 
 begin
 

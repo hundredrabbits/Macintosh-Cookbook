@@ -4,14 +4,14 @@ program ExampleSprial;
   {relative line routine in a recursive loop}
 
  var
-  sign: integer;
+  sign: Integer;
 
  procedure Spiral (x, y, sign: integer);
 
   {Procedure to spiral into limbo}
 
   var
-   temp: integer;
+   temp: Integer;
 
  begin
 

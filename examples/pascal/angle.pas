@@ -1,7 +1,7 @@
 program ExampleAngle;
 
  var
-  ax, ay, bx, by, angle, length, t: real;
+  ax, ay, bx, by, angle, length, t: Real;
 
 begin
 
@@ -15,10 +15,10 @@ begin
  bx := ax + length * cos(t);
  by := ay + length * sin(t);
 { origin }
- moveTo(round(ax), round(ay));
- lineTo(round(ax + 100), round(ay));
+ MoveTo(round(ax), round(ay));
+ LineTo(round(ax + 100), round(ay));
 { offset }
- moveTo(round(ax), round(ay));
- lineTo(round(bx), round(by));
+ MoveTo(round(ax), round(ay));
+ LineTo(round(bx), round(by));
 
 end.

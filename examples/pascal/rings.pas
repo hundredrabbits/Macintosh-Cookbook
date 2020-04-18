@@ -17,7 +17,7 @@ begin
   Diam := Diam + Increase;
   Bottom := Diam;
   Right := Diam;
-  setRect(box, Left, Top, Right, Bottom);
+  SetRect(box, Left, Top, Right, Bottom);
   FrameOval(box);
  until Diam > 400
  

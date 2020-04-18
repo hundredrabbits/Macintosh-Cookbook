@@ -1,11 +1,11 @@
 program ExampleShapes;
 
- procedure traceShape (cx, cy, r, sides: real);
+ procedure TraceShape (cx, cy, r, sides: real);
   const
    PI = 3.141592654;
   var
-   side: real;
-   ax, ay, bx, by: real;
+   side: Real;
+   ax, ay, bx, by: Real;
    center: Point;
  begin
   side := sides;
@@ -15,18 +15,18 @@ program ExampleShapes;
    ay := center.v + r * sin(2 * PI * side / sides);
    bx := center.h + r * cos(2 * PI * (side + 1) / sides);
    by := center.v + r * sin(2 * PI * (side + 1) / sides);
-   moveTo(round(ax), round(ay));
-   lineTo(round(bx), round(by));
+   MoveTo(round(ax), round(ay));
+   LineTo(round(bx), round(by));
    side := side - 1;
   until side < 1;
  end;
 
 begin
 
- traceShape(100, 100, 60, 24);
- traceShape(100, 100, 60, 12);
- traceShape(100, 100, 60, 6);
- traceShape(100, 100, 60, 3);
+ TraceShape(100, 100, 60, 24);
+ TraceShape(100, 100, 60, 12);
+ TraceShape(100, 100, 60, 6);
+ TraceShape(100, 100, 60, 3);
  ShowDrawing;
 
 end.

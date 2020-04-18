@@ -8,13 +8,13 @@ program ExampleBezier;
 {cubic curve. }
 
  type
-  mat = array[1..4, 1..4] of real;
+  mat = array[1..4, 1..4] of Real;
  var
   Px, Py, Cx, Cy: mat;
   Tv, Mb, x, y: mat;
-  i, j, k, xx, yy: integer;
+  i, j, k, xx, yy: Integer;
   window: rect;
-  t, dt: real;
+  t, dt: Real;
   P: point;
 
 {************* MatMlt **************}
@@ -27,8 +27,8 @@ program ExampleBezier;
     { D = n x m output matrix }
 
   var
-   i, j, k: integer;
-   sum: real;
+   i, j, k: Integer;
+   sum: Real;
    temp: mat;
 
  begin
@@ -53,13 +53,13 @@ program ExampleBezier;
  procedure getPoints;
 
   var
-   i, x, y: integer;
+   i, x, y: Integer;
 
  begin {First set up drawing window}
 
-  setRect(window, 30, 30, 400, 300);
+  SetRect(window, 30, 30, 400, 300);
   setDrawingRect(window);
-  showDrawing;
+  ShowDrawing;
   penSize(2, 2);
   moveto(40, 20); {Print heading }
   textSize(18);
@@ -70,11 +70,11 @@ program ExampleBezier;
         {Loop to read 4 points.}
   for i := 1 to 4 do
    begin
-    setRect(window, 90, 30, 255, 50);
+    SetRect(window, 90, 30, 255, 50);
     eraseRect(window);
     moveto(100, 45);
     writeDraw('Please click in point', I : 3);
-    frameRect(window);
+    FrameRect(window);
     repeat
      getMouse(P)
     until button;
@@ -82,7 +82,7 @@ program ExampleBezier;
     until (not button);
     Px[i, 1] := P.h;
     Py[i, 1] := P.v;
-    setRect(window, (P.h - 2), (P.v - 2), (P.h + 4), (P.v + 4));
+    SetRect(window, (P.h - 2), (P.v - 2), (P.h + 4), (P.v + 4));
         {Draw point as 6-pixel diameter circle.}
     paintOval(window);
    end;

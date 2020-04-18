@@ -1,13 +1,13 @@
 program ExampleAround;
 
  var
-  count, countup, countdown: integer;
+  count, countup, countdown: Integer;
   box: rect;
 
 begin
 
 { Create the window rect }
- setRect(box, 100, 100, 320, 320);
+ SetRect(box, 100, 100, 320, 320);
  SetDrawingRect(box);
  ShowDrawing;
 

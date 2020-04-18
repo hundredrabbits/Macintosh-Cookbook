@@ -6,8 +6,8 @@ program ExampleShape;
   DOTS = 10;
 
  var
-  dot: integer;
-  ax, ay, bx, by: real;
+  dot: Integer;
+  ax, ay, bx, by: Real;
   center: Point;
 
 begin
@@ -20,8 +20,8 @@ begin
   ay := center.v + R * sin(2 * PI * dot / DOTS);
   bx := center.h + R * cos(2 * PI * (dot + 1) / DOTS);
   by := center.v + R * sin(2 * PI * (dot + 1) / DOTS);
-  moveTo(round(ax), round(ay));
-  lineTo(round(bx), round(by));
+  MoveTo(round(ax), round(ay));
+  LineTo(round(bx), round(by));
   dot := dot - 1;
  until dot < 1;
 

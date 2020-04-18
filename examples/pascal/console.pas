@@ -4,20 +4,20 @@ program ExampleConsole;
   message = ' Welcome to the world of Pascal ';
 
  type
-  name = string;
+  name = String;
 
  var
   firstname, surname: name;
 
 begin
 
- writeln('Please enter your first name: ');
- readln(firstname);
+ Writeln('Please enter your first name: ');
+ Readln(firstname);
 
- writeln('Please enter your surname: ');
- readln(surname);
+ Writeln('Please enter your surname: ');
+ Readln(surname);
 
  writeln;
- writeln(message, ' ', firstname, ' ', surname);
+ Writeln(message, ' ', firstname, ' ', surname);
 
 end.

@@ -7,13 +7,13 @@ R = 10;
 
  type
 complex = record
-  r: real;
+  r: Real;
   i: real
  end;
 
  var
-i, j, k, n, row, col: integer;
-x, y: real;
+i, j, k, n, row, col: Integer;
+x, y: Real;
 z, znew, c: complex;
 done, gone: Boolean;
 

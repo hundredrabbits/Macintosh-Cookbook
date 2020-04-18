@@ -1,7 +1,7 @@
 program TowersOfHanoi (input, output);
 
  var
-  disks: integer;
+  disks: Integer;
 
  procedure Hanoi (source, temp, destination: char; n: integer);
 
@@ -9,14 +9,14 @@ program TowersOfHanoi (input, output);
   if n > 0 then
    begin
     Hanoi(source, destination, temp, n - 1);
-    writeln('Move disk ', n : 1, ' from peg ', source, ' to peg ', destination);
+    Writeln('Move disk ', n : 1, ' from peg ', source, ' to peg ', destination);
     Hanoi(temp, source, destination, n - 1);
    end;
  end;
 
 begin
- write('Enter the number of disks: ');
- readln(disks);
- writeln('Solution:');
+ Write('Enter the number of disks: ');
+ Readln(disks);
+ Writeln('Solution:');
  Hanoi('A', 'B', 'C', disks);
 end.

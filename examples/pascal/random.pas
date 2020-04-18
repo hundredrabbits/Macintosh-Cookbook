@@ -1,7 +1,7 @@
 program ExampleRandom;
 
  var
-  x, ps, start1, start2, endpt1, endpt2: integer;
+  x, ps, start1, start2, endpt1, endpt2: Integer;
 
 begin
 
