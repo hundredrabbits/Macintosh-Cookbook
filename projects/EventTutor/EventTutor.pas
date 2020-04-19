@@ -22,10 +22,10 @@ program EventTutor;
 
  var
   gPictWindow, gEventWindow: WindowPtr;
-  gDone, gWNEimplemented: BOOLEAN;
   gTheEvent: EventRecord;
-  gCurRow, gMaxRow: INTEGER;
   gSizeRect: Rect;
+  gDone, gWNEimplemented: BOOLEAN;
+  gCurRow, gMaxRow: INTEGER;
 
 {>>}
  procedure CenterPict (thePicture: PicHandle; var myRect: Rect);
@@ -68,7 +68,6 @@ program EventTutor;
  end;
 
 {>>}
-
  procedure HandleMouseDown;
   var
    whichWindow: WindowPtr;
@@ -189,8 +188,6 @@ program EventTutor;
        else
        DrawEventString('activateEvt: deactivating gPictWindow');
       end
-
-
      else
       begin
        if (BitAnd(gTheEvent.modifiers, activeFlag) = ACTIVATING) then
