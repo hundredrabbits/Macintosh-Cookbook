@@ -5,7 +5,7 @@ program Rabbits;
    bounds: Rect;
  begin
   SetRect(bounds, col * size + pad, row * size + pad, (col * size + pad) + 8, (row * size + pad) + 8);
-  paintOval(bounds);
+  PaintOval(bounds);
  end;
 
  var
@@ -16,7 +16,7 @@ begin
  repeat
   col := 0;
   repeat
-   draw(row, col, 10, 60);
+   Draw(row, col, 10, 60);
    col := col + 1;
   until col = 10;
   row := row + 1;

@@ -10,6 +10,8 @@ program SineFix;
 
 begin
 
+ ShowDrawing;
+ 
  amp := Long2Fix(50);
  a := 0;
  repeat

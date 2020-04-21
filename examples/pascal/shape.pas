@@ -12,6 +12,8 @@ program ExampleShape;
 
 begin
 
+ ShowDrawing;
+ 
  dot := DOTS;
  setPt(center, 100, 100);
 
@@ -24,7 +26,5 @@ begin
   LineTo(round(bx), round(by));
   dot := dot - 1;
  until dot < 1;
-
- ShowDrawing;
 
 end.

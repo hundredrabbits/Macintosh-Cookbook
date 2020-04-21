@@ -16,9 +16,9 @@ begin
  b := a;
 
  OffSetRect(b, size, 0);
- copyBits(thePort^.portBits, thePort^.portBits, a, b, srcCopy, nil);
+ CopyBits(thePort^.portBits, thePort^.portBits, a, b, srcCopy, nil);
  OffSetRect(b, 0, size);
- copyBits(thePort^.portBits, thePort^.portBits, a, b, srcCopy, nil);
+ CopyBits(thePort^.portBits, thePort^.portBits, a, b, srcCopy, nil);
 
  FrameRect(b);
 

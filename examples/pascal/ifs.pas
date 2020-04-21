@@ -18,8 +18,8 @@ program ExampleIFS;
  procedure pset (x, y: integer);
 {Procedure to plot point at pixel (x,y).}
  begin
-  moveto(x, y);
-  lineto(x, y);
+  Moveto(x, y);
+  Lineto(x, y);
  end;
 
 {********* Define Object ***********}

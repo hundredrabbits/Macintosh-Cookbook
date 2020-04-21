@@ -55,7 +55,7 @@ program SimpleMenu;
    fontName: Str255;
    fontMenu: MenuHandle;
  begin
-  writeln(theItem);
+  Writeln(theItem);
  end;
 
 {>>}

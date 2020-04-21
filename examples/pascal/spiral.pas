@@ -1,4 +1,4 @@
-program ExampleSprial;
+program ExampleSpiral;
 
   {Program to build spiral pattern, using}
   {relative line routine in a recursive loop}
@@ -47,9 +47,10 @@ program ExampleSprial;
 
 begin
 
+ ShowDrawing;
+ 
  sign := 1;
  PenSize(9, 9);
- ShowDrawing;
  MoveTo(20, 20);
  Spiral(200, 0, -1);
 

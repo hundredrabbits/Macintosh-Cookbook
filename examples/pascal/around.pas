@@ -16,11 +16,11 @@ begin
   begin
    countup := count * 4;
    countdown := 200 - countup;
-   moveto(countup, 0);
-   lineto(200, countup);
-   lineto(countdown, 200);
-   lineto(0, countdown);
-   lineto(countup, 0);
+   Moveto(countup, 0);
+   Lineto(200, countup);
+   Lineto(countdown, 200);
+   Lineto(0, countdown);
+   Lineto(countup, 0);
   end
   
 end.

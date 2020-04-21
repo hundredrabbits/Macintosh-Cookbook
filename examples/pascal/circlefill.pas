@@ -1,6 +1,6 @@
 program ExampleCircleFill;
 
- procedure fillcircle (xc, yc, radius: integer);
+ procedure Fillcircle (xc, yc, radius: integer);
   var
    x, y: Integer;
  begin
@@ -10,8 +10,8 @@ program ExampleCircleFill;
      begin
       if (x * x + y * y <= radius * radius) then
        begin
-       moveto(xc + x, yc + y);
-       lineto(xc + x, yc + y);
+       Moveto(xc + x, yc + y);
+       Lineto(xc + x, yc + y);
        end;
      end;
    end;
@@ -19,6 +19,6 @@ program ExampleCircleFill;
 
 begin
 
- fillcircle(60, 60, 40);
+ Fillcircle(60, 60, 40);
 
 end.

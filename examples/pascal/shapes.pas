@@ -23,10 +23,10 @@ program ExampleShapes;
 
 begin
 
+ ShowDrawing;
  TraceShape(100, 100, 60, 24);
  TraceShape(100, 100, 60, 12);
  TraceShape(100, 100, 60, 6);
  TraceShape(100, 100, 60, 3);
- ShowDrawing;
 
 end.

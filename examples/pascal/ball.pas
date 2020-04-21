@@ -1,4 +1,5 @@
 program ExampleBall;
+
  const
   PICTURE_HEIGHT = 100;
   PICTURE_WIDTH = 400;
@@ -11,7 +12,7 @@ program ExampleBall;
   Vertical_Position, Velocity: Real;
   box: Rect;
 
- procedure Draw_Ball (Vertical_Position: Integer);
+ procedure DrawBall (Vertical_Position: Integer);
   var
    Top, Left, Bottom, Right: Integer;
  begin
@@ -24,11 +25,12 @@ program ExampleBall;
  end;
 
 begin {bouncing ball}
+
  ShowDrawing;
  Horizontal_Position := BALL_SIZE + 1;
  Vertical_Position := PICTURE_HEIGHT - BALL_SIZE - 1;
  Velocity := 0;
- Draw_Ball(round(Vertical_Position));
+ DrawBall(round(Vertical_Position));
  repeat
   Horizontal_Position := Horizontal_Position + 2;
   Velocity := Velocity + GRAVITY;
@@ -38,6 +40,7 @@ begin {bouncing ball}
     Vertical_Position := Abs(Vertical_Position);
     Velocity := -(BOUNCINESS * Velocity);
    end;
-  Draw_Ball(round(Vertical_Position));
+  DrawBall(round(Vertical_Position));
  until Horizontal_Position >= PICTURE_WIDTH;
+
 end.

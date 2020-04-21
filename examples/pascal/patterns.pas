@@ -12,11 +12,11 @@ begin
  SetRect(rltgray, 10 + (50 * 3), 10, 10 + (50 * 4), 50);
  SetRect(rwhite, 10 + (50 * 4), 10, 10 + (50 * 5), 50);
 
- fillRect(rblack, black);
- fillRect(rdkgray, dkgray);
- fillRect(rgray, gray);
- fillRect(rltgray, ltgray);
- fillRect(rwhite, white);
+ FillRect(rblack, black);
+ FillRect(rdkgray, dkgray);
+ FillRect(rgray, gray);
+ FillRect(rltgray, ltgray);
+ FillRect(rwhite, white);
  FrameRect(rblack);
  FrameRect(rdkgray);
  FrameRect(rgray);

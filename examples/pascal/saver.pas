@@ -112,7 +112,6 @@ program ExampleSaver;
 
  procedure Draw;
  begin
-
   MoveTo(round(p1.x), round(p1.y));
   LineTo(round(p2.x), round(p2.y));
   LineTo(round(p3.x), round(p3.y));

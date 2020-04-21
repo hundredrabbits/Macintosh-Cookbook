@@ -11,8 +11,8 @@ program ExampleBresenham;
  procedure point (x, y: integer);
     {Procedure to plot point at (x,y)}
  begin
-  moveto(xp, yp);
-  lineto(xp, yp);
+  Moveto(xp, yp);
+  Lineto(xp, yp);
  end;
 begin
     {Query the user for two points}

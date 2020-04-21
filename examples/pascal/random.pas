@@ -13,8 +13,8 @@ begin
    endpt1 := Random mod 200;
    endpt2 := Random mod 200;
    PenSize(ps, ps);
-   moveto(start1 + 200, start2 + 100);
-   lineto(endpt1 + 200, endpt2 + 100);
+   Moveto(start1 + 200, start2 + 100);
+   Lineto(endpt1 + 200, endpt2 + 100);
   end
 
 end.

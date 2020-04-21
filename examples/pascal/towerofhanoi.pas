@@ -15,8 +15,10 @@ program TowersOfHanoi (input, output);
  end;
 
 begin
+
  Write('Enter the number of disks: ');
  Readln(disks);
  Writeln('Solution:');
  Hanoi('A', 'B', 'C', disks);
+ 
 end.

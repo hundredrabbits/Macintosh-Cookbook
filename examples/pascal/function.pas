@@ -1,10 +1,12 @@
 program ExampleFunction;
 
- function add (a, b: integer): Integer;
+ function Add (a, b: integer): Integer;
  begin
-  add := a + b;
+  Add := a + b;
  end;
 
 begin
- Writeln('5+6=', add(5, 6));
+
+ Writeln('5+6=', Add(5, 6));
+
 end.

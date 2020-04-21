@@ -30,8 +30,8 @@ program ExampleJulia;
  procedure plot (c, r: integer);
 {Procedure to pixel (c.r).}
  begin
-  moveto(c, r);
-  lineto(c, r);
+  Moveto(c, r);
+  Lineto(c, r);
  end;
 begin
  showtext;

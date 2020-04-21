@@ -13,11 +13,9 @@ begin
 
  Writeln('Please enter your first name: ');
  Readln(firstname);
-
  Writeln('Please enter your surname: ');
  Readln(surname);
-
- writeln;
+ Writeln;
  Writeln(message, ' ', firstname, ' ', surname);
 
 end.
