@@ -1,12 +1,12 @@
 program ExampleMouse;
 
  var
-  tic1, tic2: Longint;
   Pt: Point;
 
 begin
 
  ShowDrawing;
+ ShowText;
 
  repeat {Until we double-click}
 
@@ -19,8 +19,7 @@ begin
     Writeln('down', Pt.h, Pt.v);
     repeat {Tight loop until button up}
     until not Button;
-    tic1 := TickCount; {Sample system clock: }
-   end; {1/60 sec ticks}
+   end;
 
 { Button up message detector}
 
@@ -29,9 +28,8 @@ begin
     Writeln('up', Pt.h, Pt.v);
     repeat {Tight loop until button down}
     until button;
-    tic2 := TickCount; {Sample system clock}
    end;
 
- until abs(tic2 - tic1) < 10; {Double click message detector}
+ until 1 > 1; { forever}
 
 end.
