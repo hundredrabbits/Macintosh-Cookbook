@@ -1,5 +1,8 @@
 program ExampleFile;
 
+ const
+  FILENAME = 'data.txt';
+
  var
   outfile: Text;
 
@@ -7,10 +10,10 @@ begin
 
  ShowText;
 
- ReWrite(outfile, 'data.txt');
+ ReWrite(outfile, FILENAME);
  Writeln(outfile, 'hello world');
  Writeln(outfile, 'foo bar');
 
- Writeln('Writing data.txt complete.');
+ Writeln('Writing ', FILENAME, ' complete.');
 
 end.
