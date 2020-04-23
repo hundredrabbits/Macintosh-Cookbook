@@ -1,8 +1,8 @@
 program ExampleFractal;
 
-{Program to play the Chaos Game }
+{ Program to play the Chaos Game }
 
-{Algorithm: }
+{ Algorithm: }
 { 1. Pick a point in a triangle at random & plot it }
 { 2. Pick a vertex of the triangle at random }
 { 3. Move 1/2 way from present point to this vertex }

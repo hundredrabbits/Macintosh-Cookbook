@@ -82,7 +82,7 @@ program ZoeViewer;
   until False;
  end;
 
- procedure DrawFile;
+ procedure DrawFile (contents: Ptr; fileSize: Longint);
   var
    bmap: BitMap;
    headerPtr: ^Longint;
@@ -125,6 +125,6 @@ begin
  ShowText;
 
  SelectFile;
- DrawFile;
+ DrawFile(contents, fileSize);
 
 end.
