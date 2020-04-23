@@ -88,6 +88,7 @@ program ZoeViewer;
    headerPtr: ^Longint;
    header: Longint;
    width, height: Integer;
+   viewer: Rect;
  begin
   bmap.baseAddr := nil;
   headerPtr := Pointer(contents);
@@ -111,6 +112,8 @@ program ZoeViewer;
    end;
   ShowDrawing;
   SetRect(bmap.bounds, 0, 0, width * 8, height);
+  SetRect(viewer, 60, 60, width * 8 + 15, height + 75);
+  SetDrawingRect(viewer);
   bmap.rowBytes := width;
   bmap.baseAddr := Pointer(Longint(contents) + 4);
   CopyBits(bmap, thePort^.portBits, bmap.bounds, bmap.bounds, srcCopy, nil);
