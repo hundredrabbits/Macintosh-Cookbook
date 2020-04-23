@@ -3,10 +3,8 @@ program ZoeViewer;
  var
   fileRefNum: Integer;
   contents: Ptr;
-  fileSize, totalRead, thisRead: Longint;
-  reply: SFReply;
+  fileSize, thisRead: Longint;
   err: OSErr;
-  pnt: Point;
 
  procedure CloseFile;
  begin
@@ -32,6 +30,56 @@ program ZoeViewer;
  begin
   Cleanup;
   Halt;
+ end;
+
+ procedure SelectFile;
+  var
+   reply: SFReply;
+   totalRead: Longint;
+   pnt: Point;
+ begin
+  fileRefNum := -1;
+  totalRead := 0;
+  contents := nil;
+  SetPt(pnt, 0, 0);
+  SFGetFile(pnt, 'Pick a ZOE file:', nil, -1, nil, nil, reply);
+  if not reply.good then
+   Halt;
+  err := FSOpen(reply.fName, reply.vRefNum, fileRefNum);
+  if err <> 0 then
+   begin
+    WriteLn('FSOpen error:', err);
+    CleanupAndHalt;
+   end;
+  err := GetEOF(fileRefNum, fileSize);
+  if err <> 0 then
+   begin
+    WriteLn('GetEOF error:', err);
+    CleanupAndHalt;
+   end;
+  if fileSize < 4 then
+   begin
+    WriteLn('File too small');
+    CleanupAndHalt;
+   end;
+  contents := NewPtr(fileSize);
+  if contents = nil then
+   begin
+    WriteLn('Couldn'' t allocate buffer');
+    CleanupAndHalt;
+   end;
+  repeat
+   thisRead := fileSize - totalRead;
+   err := FSRead(fileRefNum, thisRead, Pointer(Longint(contents) + totalRead));
+   if err <> 0 then
+    begin
+     WriteLn('File read error:', err);
+     CleanupAndHalt;
+    end;
+   totalRead := totalRead + thisRead;
+   if totalRead >= fileSize then
+    Leave;
+  until False;
  end;
 
  procedure DrawFile;
@@ -73,57 +121,7 @@ begin
 
  ShowText;
 
- fileRefNum := -1;
- totalRead := 0;
- contents := nil;
- SetPt(pnt, 0, 0);
- SFGetFile(pnt, 'Pick a ZOE file:', nil, -1, nil, nil, reply);
-
- if not reply.good then
-  Halt;
-
- err := FSOpen(reply.fName, reply.vRefNum, fileRefNum);
-
- if err <> 0 then
-  begin
-   WriteLn('FSOpen error:', err);
-   CleanupAndHalt;
-  end;
-
- err := GetEOF(fileRefNum, fileSize);
-
- if err <> 0 then
-  begin
-   WriteLn('GetEOF error:', err);
-   CleanupAndHalt;
-  end;
-
- if fileSize < 4 then
-  begin
-   WriteLn('File too small');
-   CleanupAndHalt;
-  end;
-
- contents := NewPtr(fileSize);
-
- if contents = nil then
-  begin
-   WriteLn('Couldn'' t allocate buffer');
-   CleanupAndHalt;
-  end;
- repeat
-  thisRead := fileSize - totalRead;
-  err := FSRead(fileRefNum, thisRead, Pointer(Longint(contents) + totalRead));
-  if err <> 0 then
-   begin
-    WriteLn('File read error:', err);
-    CleanupAndHalt;
-   end;
-  totalRead := totalRead + thisRead;
-  if totalRead >= fileSize then
-   Leave;
- until False;
-
+ SelectFile;
  DrawFile;
 
 end.
