@@ -1,9 +1,16 @@
 program Zoe;
 
- var
+ var { generics }
   inputRefNum: Integer;
   outputRefNum: Integer;
   err: OSErr;
+
+ var { window }
+  windowRect: Rect;
+  window: WindowPtr;
+  gDone, gWNEimplemented: BOOLEAN;
+  gCurrentTime, gOldTime: LONGINT;
+  gTheEvent: EventRecord;
 
 { Output ----------------------------------------- }
 
@@ -168,9 +175,9 @@ program Zoe;
    end;
   width := Integer(BitAnd(header, $000000FF));
   height := (fileSize - 4) div width;
+  SizeWindow(window, width * 8, height, true);
   SetRect(bmap.bounds, 0, 0, width * 8, height);
   SetRect(viewer, 60, 60, width * 8 + 15, height + 75);
-  SetDrawingRect(viewer);
   bmap.rowBytes := width;
   bmap.baseAddr := Pointer(Longint(contents) + 4);
   SetRect(clip, 0, 0, 512, 342);
@@ -181,15 +188,7 @@ program Zoe;
   Cleanup;
  end;
 
-
 { Window ---------------------------------------- }
-
- var
-  windowRect: Rect;
-  window: WindowPtr;
-  gDone, gWNEimplemented: BOOLEAN;
-  gCurrentTime, gOldTime: LONGINT;
-  gTheEvent: EventRecord;
 
 {>>}
  procedure DoOpenFile;
@@ -348,7 +347,6 @@ program Zoe;
   window := NewWindow(nil, windowRect, 'ZOE', true, zoomDocProc, WindowPtr(-1), false, 0);
   SetPort(window);
   ShowWindow(window);
-  TextSize(24);
  end;
 
 begin
