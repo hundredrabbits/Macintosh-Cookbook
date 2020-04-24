@@ -26,9 +26,9 @@ program ExampleDrawingExport;
    err: OSErr;
    i: INTEGER;
    wher: Point; { where to display dialog }
+   reply: SFReply;
    longCount, Zero: LONGINT;
    pframe: Rect;
-   reply: SFReply;
    myProcs: QDProcs; 
  begin
   wher.h := 20;
