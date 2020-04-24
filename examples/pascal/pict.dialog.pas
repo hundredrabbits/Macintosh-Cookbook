@@ -3,14 +3,14 @@ program ExampleDrawingExport;
  var
   pic: PicHandle;
   err: OSErr;
-  refNum: Integer;
+  outputRefNum: Integer;
 
  procedure Cleanup;
  begin
-  if refNum <> -1 then
+  if outputRefNum <> -1 then
    begin
-    err := FSClose(refNum);
-    refNum := -1;
+    err := FSClose(outputRefNum);
+    outputRefNum := -1;
    end;
  end;
 
@@ -45,11 +45,11 @@ program ExampleDrawingExport;
   bigZero := 0;
   toWrite := SizeOf(Longint);
   for i := 1 to 512 div SizeOf(Longint) do
-   err := FSWrite(refNum, toWrite, @bigZero);
+   err := FSWrite(outputRefNum, toWrite, @bigZero);
   CheckError;
   toWrite := GetHandleSize(Handle(pic));
   HLock(Handle(pic));
-  err := FSWrite(refNum, toWrite, Pointer(pic^));
+  err := FSWrite(outputRefNum, toWrite, Pointer(pic^));
   HUnlock(Handle(pic));
   CheckError;
   Cleanup;
@@ -71,7 +71,7 @@ program ExampleDrawingExport;
     err := Create(reply.fname, reply.vrefnum, '????', 'PICT');
     if (err = noerr) | (err = dupfnerr) then
      begin
-      err := FSOpen(reply.fname, reply.vrefnum, refNum);
+      err := FSOpen(reply.fname, reply.vrefnum, outputRefNum);
       WriteFile;
      end;
    end;

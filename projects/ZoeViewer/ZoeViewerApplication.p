@@ -1,14 +1,74 @@
 program SimpleMenu;
 
- 
+ var
+  inputRefNum: Integer;
+  outputRefNum: Integer;
+  err: OSErr;
+
+{ Output ----------------------------------------- }
+
+ var
+  pic: PicHandle;
+
+ procedure CleanupOutput;
+ begin
+  if outputRefNum <> -1 then
+   begin
+    err := FSClose(outputRefNum);
+    outputRefNum := -1;
+   end;
+ end;
+
+ procedure CheckErrorOutput;
+ begin
+  if err = noErr then
+   Exit(CheckErrorOutput);
+  ShowText;
+  WriteLn('Error:', err);
+  CleanupOutput;
+  Halt;
+ end;
+
+ procedure SelectOutputFile;
+  var
+   wher: Point; { where to display dialog }
+   reply: SFReply;
+   toWrite, bigZero: Longint;
+   i: integer;
+ begin
+  wher.h := 20;
+  wher.v := 20;
+  SFPutFile(wher, 'Save the PICT as:', 'untitled.pict', nil, reply);
+  if reply.good then
+   begin
+    err := Create(reply.fname, reply.vrefnum, '????', 'PICT');
+    if (err = noerr) | (err = dupfnerr) then
+     begin
+      err := FSOpen(reply.fname, reply.vrefnum, outputRefNum);
+      bigZero := 0;
+      toWrite := SizeOf(Longint);
+      for i := 1 to 512 div SizeOf(Longint) do
+       err := FSWrite(outputRefNum, toWrite, @bigZero);
+      CheckErrorOutput;
+      toWrite := GetHandleSize(Handle(pic));
+      HLock(Handle(pic));
+      err := FSWrite(outputRefNum, toWrite, Pointer(pic^));
+      HUnlock(Handle(pic));
+      CheckErrorOutput;
+      CleanupOutput;
+      CheckErrorOutput;
+      KillPicture(pic);
+      pic := nil;
+     end;
+   end;
+ end;
+
 
 { Input ----------------------------------------- }
 
  var
-  inputRefNum: Integer;
   contents: Ptr;
   fileSize, thisRead: Longint;
-  err: OSErr;
 
 {>>}
  procedure CloseFile;
@@ -97,7 +157,7 @@ program SimpleMenu;
    headerPtr: ^Longint;
    header: Longint;
    width, height: Integer;
-   viewer: Rect;
+   viewer, clip: Rect;
  begin
   bmap.baseAddr := nil;
   headerPtr := Pointer(contents);
@@ -114,16 +174,14 @@ program SimpleMenu;
   SetDrawingRect(viewer);
   bmap.rowBytes := width;
   bmap.baseAddr := Pointer(Longint(contents) + 4);
+  SetRect(clip, 0, 0, 512, 342);
+  pic := OpenPicture(clip);
   CopyBits(bmap, thePort^.portBits, bmap.bounds, bmap.bounds, srcCopy, nil);
+  ClosePicture;
+  DrawPicture(pic, clip);
   Cleanup;
  end;
 
-{>>}
- procedure DoOpenFile;
- begin
-  SelectInputFile;
-  DrawFile(contents, fileSize);
- end;
 
 { Window ---------------------------------------- }
 
@@ -133,6 +191,19 @@ program SimpleMenu;
   gDone, gWNEimplemented: BOOLEAN;
   gCurrentTime, gOldTime: LONGINT;
   gTheEvent: EventRecord;
+
+{>>}
+ procedure DoOpenFile;
+ begin
+  SelectInputFile;
+  DrawFile(contents, fileSize);
+ end;
+
+{>>}
+ procedure DoSaveFile;
+ begin
+  SelectOutputFile;
+ end;
 
 {>>}
  procedure HandleAppleChoice (theItem: INTEGER);
@@ -160,7 +231,7 @@ program SimpleMenu;
    1: {open}
     DoOpenFile;
    2: {save}
-    gDone := TRUE;
+    DoSaveFile;
    3: {quit}
     gDone := TRUE;
   end;
