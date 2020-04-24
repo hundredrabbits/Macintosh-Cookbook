@@ -1,4 +1,4 @@
-program SimpleMenu;
+program Zoe;
 
  var
   inputRefNum: Integer;
@@ -62,7 +62,6 @@ program SimpleMenu;
      end;
    end;
  end;
-
 
 { Input ----------------------------------------- }
 
