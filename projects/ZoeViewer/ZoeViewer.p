@@ -1,19 +1,19 @@
 program ZoeViewer;
 
  var
-  fileRefNum: Integer;
+  inputRefNum: Integer;
   contents: Ptr;
   fileSize, thisRead: Longint;
   err: OSErr;
 
  procedure CloseFile;
  begin
-  if fileRefNum = -1 then
+  if inputRefNum = -1 then
    Exit(CloseFile);
-  err := FSClose(fileRefNum);
+  err := FSClose(inputRefNum);
   if err <> 0 then
    WriteLn('FSClose error:', err);
-  fileRefNum := -1;
+  inputRefNum := -1;
  end;
 
  procedure Cleanup;
@@ -32,26 +32,26 @@ program ZoeViewer;
   Halt;
  end;
 
- procedure SelectFile;
+ procedure SelectInputFile;
   var
    reply: SFReply;
    totalRead: Longint;
    pnt: Point;
  begin
-  fileRefNum := -1;
+  inputRefNum := -1;
   totalRead := 0;
   contents := nil;
   SetPt(pnt, 0, 0);
   SFGetFile(pnt, 'Pick a ZOE file:', nil, -1, nil, nil, reply);
   if not reply.good then
    Halt;
-  err := FSOpen(reply.fName, reply.vRefNum, fileRefNum);
+  err := FSOpen(reply.fName, reply.vRefNum, inputRefNum);
   if err <> 0 then
    begin
     WriteLn('FSOpen error:', err);
     CleanupAndHalt;
    end;
-  err := GetEOF(fileRefNum, fileSize);
+  err := GetEOF(inputRefNum, fileSize);
   if err <> 0 then
    begin
     WriteLn('GetEOF error:', err);
@@ -70,7 +70,7 @@ program ZoeViewer;
    end;
   repeat
    thisRead := fileSize - totalRead;
-   err := FSRead(fileRefNum, thisRead, Pointer(Longint(contents) + totalRead));
+   err := FSRead(inputRefNum, thisRead, Pointer(Longint(contents) + totalRead));
    if err <> 0 then
     begin
      WriteLn('File read error:', err);
@@ -99,17 +99,7 @@ program ZoeViewer;
     CleanupAndHalt;
    end;
   width := Integer(BitAnd(header, $000000FF));
-  if width = 0 then
-   begin
-    WriteLn('Zero width');
-    CleanupAndHalt;
-   end;
   height := (fileSize - 4) div width;
-  if height = 0 then
-   begin
-    WriteLn('Zero height');
-    CleanupAndHalt;
-   end;
   ShowDrawing;
   SetRect(bmap.bounds, 0, 0, width * 8, height);
   SetRect(viewer, 60, 60, width * 8 + 15, height + 75);
@@ -124,7 +114,7 @@ begin
 
  ShowText;
 
- SelectFile;
+ SelectInputFile;
  DrawFile(contents, fileSize);
 
 end.
