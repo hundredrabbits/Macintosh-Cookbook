@@ -1,11 +1,9 @@
 program ExampleDrawingExport;
 
  var
-  oval, clip: Rect;
   pic: PicHandle;
   err: OSErr;
   refNum: Integer;
-  toWrite, bigZero: Longint;
 
  procedure Cleanup;
  begin
@@ -27,8 +25,11 @@ program ExampleDrawingExport;
  end;
 
  procedure PaintPicture;
+  var
+   clip, oval: rect;
  begin
   ShowDrawing;
+  SetRect(clip, 0, 0, 100, 100);
   SetRect(oval, 20, 20, 80, 80);
   pic := OpenPicture(clip);
   FillOval(oval, ltgray);
@@ -36,49 +37,49 @@ program ExampleDrawingExport;
   DrawPicture(pic, clip);
  end;
 
+ procedure WriteFile;
+  var
+   toWrite, bigZero: Longint;
+   i: integer;
+ begin
+  bigZero := 0;
+  toWrite := SizeOf(Longint);
+  for i := 1 to 512 div SizeOf(Longint) do
+   err := FSWrite(refNum, toWrite, @bigZero);
+  CheckError;
+  toWrite := GetHandleSize(Handle(pic));
+  HLock(Handle(pic));
+  err := FSWrite(refNum, toWrite, Pointer(pic^));
+  HUnlock(Handle(pic));
+  CheckError;
+  Cleanup;
+  CheckError;
+  KillPicture(pic);
+  pic := nil;
+ end;
+
  procedure CreateFile;
   var
    wher: Point; { where to display dialog }
    reply: SFReply;
-   i: integer;
  begin
   wher.h := 20;
   wher.v := 20;
-  SFPutFile(wher, 'Save the PICT as:', 'untitled', nil, reply);
+  SFPutFile(wher, 'Save the PICT as:', 'untitled.pict', nil, reply);
   if reply.good then
    begin
     err := Create(reply.fname, reply.vrefnum, '????', 'PICT');
     if (err = noerr) | (err = dupfnerr) then
      begin
       err := FSOpen(reply.fname, reply.vrefnum, refNum);
-      toWrite := SizeOf(Longint);
-      for i := 1 to 512 div SizeOf(Longint) do
-       err := FSWrite(refNum, toWrite, @bigZero);
-      CheckError;
-      toWrite := GetHandleSize(Handle(pic));
-      HLock(Handle(pic));
-      err := FSWrite(refNum, toWrite, Pointer(pic^));
-      HUnlock(Handle(pic));
-
-      CheckError;
-      Cleanup;
-      CheckError;
-
-      KillPicture(pic);
-
-      pic := nil;
+      WriteFile;
      end;
    end;
  end;
 
 begin
 
- bigZero := 0;
- SetRect(clip, 0, 0, 100, 100);
-
  PaintPicture;
-
  CreateFile;
-
 
 end.
