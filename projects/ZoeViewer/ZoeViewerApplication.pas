@@ -349,6 +349,7 @@ program Zoe;
   window := NewWindow(nil, windowRect, 'ZOE', true, zoomDocProc, WindowPtr(-1), false, 0);
   SetPort(window);
   ShowWindow(window);
+  SetCursor(arrow);
  end;
 
 begin
