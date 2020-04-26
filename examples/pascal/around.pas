@@ -22,5 +22,5 @@ begin
    Lineto(0, countdown);
    Lineto(countup, 0);
   end
-  
+
 end.

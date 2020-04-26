@@ -1,6 +1,5 @@
 program ExampleIFS;
-{Program to compute fractals using IFSs.}
-{Ref.: Barnsley, "Fractals Everywhere , p. 88}
+
  const
   pixdim = 120;
  type
@@ -14,21 +13,16 @@ program ExampleIFS;
   i, j, k, dpix: Integer;
   box: rect;
 
-{********** Pset **************}
  procedure pset (x, y: integer);
-{Procedure to plot point at pixel (x,y).}
  begin
   Moveto(x, y);
   Lineto(x, y);
  end;
 
-{********* Define Object ***********}
  procedure DefineObject (var t: pic);
-{Procedure to define initial graphical object}
   var
    i, j: Integer;
  begin
-{Initialize object to an upper half-diagonal square.}
   for i := 1 to pixdim do
    for j := 1 to pixdim do
     if j < i then
@@ -39,12 +33,10 @@ program ExampleIFS;
   SetRect(box, 1, 1, pixdim, pixdim);
  end;
 
-{************* SetCoef ***********}
  procedure SetCoef (var a, b, c, d, e, f: vec);
-{Procedure to set up coefficient of affine transform.}
   var
    i: Integer;
- begin {Set problem parameters for Sierpinski triangle.}
+ begin
   for i := 1 to 3 do
    begin
     a[i] := 0.5;
@@ -58,12 +50,14 @@ program ExampleIFS;
   f[3] := pixdim / 2;
  end;
 
-{***************Main Program***************}
+
 begin
+
+ ShowDrawing;
  DefineObject(t);
  SetCoef(a, b, c, d, e, f);
  dpix := pixdim div 2;
-{Map next generation of image A(n+1) = W(A(n))}
+
  repeat
   for i := 1 to pixdim do
    for j := 1 to pixdim do
@@ -76,8 +70,9 @@ begin
        s[x[k], y[k]] := true;
        end;
      end;
-{Now plot.}
+
   EraseRect(box);
+
   for i := 1 to pixdim do
    for j := 1 to pixdim do
     begin
@@ -89,4 +84,5 @@ begin
   dpix := dpix div 2;
   WriteLn('dpix = ', dpix);
  until button or (dpix < 1)
+
 end.

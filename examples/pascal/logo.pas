@@ -13,6 +13,7 @@ program Rabbits;
 
 begin
 
+ ShowDrawing;
  repeat
   col := 0;
   repeat
@@ -21,7 +22,5 @@ begin
   until col = 10;
   row := row + 1;
  until row = 10;
-
- ShowDrawing;
 
 end.

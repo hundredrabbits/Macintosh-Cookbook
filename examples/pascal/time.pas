@@ -7,6 +7,7 @@ program ExampleTime;
 begin
 
  ShowText;
+ 
  GetTime(date);
  GetDateTime(seconds);
  Writeln('The current time is:');

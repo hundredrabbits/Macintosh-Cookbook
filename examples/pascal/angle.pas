@@ -14,6 +14,8 @@ begin
  t := angle * PI / 180;
  bx := ax + length * cos(t);
  by := ay + length * sin(t);
+
+ ShowDrawing;
 { origin }
  MoveTo(round(ax), round(ay));
  LineTo(round(ax + 100), round(ay));

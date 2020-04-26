@@ -10,7 +10,8 @@ program ExampleConsole;
   firstname, surname: name;
 
 begin
-
+ 
+ ShowText;
  Writeln('Please enter your first name: ');
  Readln(firstname);
  Writeln('Please enter your surname: ');

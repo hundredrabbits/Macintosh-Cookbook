@@ -34,7 +34,8 @@ program ExampleJulia;
   Lineto(c, r);
  end;
 begin
- showtext;
+
+ ShowText;
  writeLn('How many iterations at each point?');
  readLn(Nit);
  writeLn('Value of C: (Cr,Ci)?');
@@ -58,4 +59,5 @@ begin
      plot(col, row);
     n := 0;
    end;
+   
 end.

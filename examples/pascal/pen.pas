@@ -6,8 +6,9 @@ program ExamplePen;
 
 begin
 
- PenSize(10, 10);
- 
+ ShowDrawing;
+ PenSize(10, 1);
+
  while true do
   begin
    repeat

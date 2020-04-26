@@ -7,6 +7,7 @@ program ExampleFunction;
 
 begin
 
+ ShowText;
  Writeln('5+6=', Add(5, 6));
 
 end.

@@ -10,8 +10,9 @@ program ExampleProcedure;
 
 begin
 
+ ShowDrawing;
  Tri(10, 10, 100);
  Tri(40, 40, 80);
  Tri(80, 85, 180);
- 
+
 end.

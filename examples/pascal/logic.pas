@@ -7,10 +7,11 @@ program ExampleLogic;
 
 begin
 
+ ShowText;
  name := 'alice';
  if (name = 'alice') then
   Writeln('The name is alice.')
- else if (a = 'bob') then
+ else if (name = 'bob') then
   Writeln('The name is bob.')
  else
   Writeln('The name is not alice nor bob.');

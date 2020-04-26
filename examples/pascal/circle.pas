@@ -32,6 +32,8 @@ begin
 
  Writeln('Radius:');
  Readln(r);
+
+ ShowDrawing;
  Circle(r);
 
 end.

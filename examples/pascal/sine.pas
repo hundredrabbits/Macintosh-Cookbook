@@ -9,6 +9,7 @@ program ExampleSine;
 begin
 
  ShowDrawing;
+ 
  x := 0;
 
  repeat

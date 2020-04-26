@@ -10,7 +10,7 @@ program ExampleBall;
  var
   Horizontal_Position: Integer;
   Vertical_Position, Velocity: Real;
-  box: Rect;
+  drawingRect, ovalRect: Rect;
 
  procedure DrawBall (Vertical_Position: Integer);
   var
@@ -20,13 +20,16 @@ program ExampleBall;
   Left := Horizontal_Position - BALL_SIZE;
   Bottom := COURT_LEVEL - Vertical_Position + BALL_SIZE;
   Right := Horizontal_Position + BALL_SIZE;
-  SetRect(box, Left, Top, Right, Bottom);
-  FrameOval(box);
+  SetRect(ovalRect, Left, Top, Right, Bottom);
+  FrameOval(ovalRect);
  end;
 
 begin {bouncing ball}
 
  ShowDrawing;
+ SetRect(drawingRect, 60, 60, 80 + PICTURE_WIDTH, 80 + PICTURE_HEIGHT);
+ SetDrawingRect(drawingRect);
+
  Horizontal_Position := BALL_SIZE + 1;
  Vertical_Position := PICTURE_HEIGHT - BALL_SIZE - 1;
  Velocity := 0;

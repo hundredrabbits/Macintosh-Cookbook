@@ -5,6 +5,8 @@ program ExampleRandom;
 
 begin
 
+ ShowDrawing;
+
  for x := 1 to 20 do
   begin
    ps := Random mod 10;

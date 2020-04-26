@@ -19,6 +19,7 @@ program ExampleCircleFill;
 
 begin
 
+ ShowDrawing;
  Fillcircle(60, 60, 40);
 
 end.

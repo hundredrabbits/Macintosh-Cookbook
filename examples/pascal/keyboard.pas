@@ -6,11 +6,10 @@ program ExampleKeyboard;
 begin
 
  ShowText;
-
  repeat
-  write('Press a key. ');
-  readln(Key);
-  writeln('The ordinal value of this key is ', ord(Key), '.');
+  Write('Press a key. ');
+  Readln(Key);
+  Writeln('The ordinal value of this key is ', ord(Key), '.');
  until ord(Key) = 22;
 
 end.

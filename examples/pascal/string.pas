@@ -5,6 +5,8 @@ program ExampleString;
 
 begin
 
+ ShowText;
+ 
  foo := 'foo';
  Writeln(foo);
 

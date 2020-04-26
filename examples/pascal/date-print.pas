@@ -13,7 +13,7 @@ program ExampleDate;
   Access_Date: Date;
   Temp_Date: DateTimeRec;
 
- function Present_Month (Number: integer): String;
+ function Present_Month (Number: integer): string;
  begin
   case Number of
    1: 
@@ -43,7 +43,7 @@ program ExampleDate;
   end;
  end;
 
- function Present_Dayname (Number: integer): String;
+ function Present_Dayname (Number: integer): string;
  begin
   case Number of
    1: 

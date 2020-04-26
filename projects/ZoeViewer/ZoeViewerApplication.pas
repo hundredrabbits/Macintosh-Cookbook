@@ -111,12 +111,14 @@ program Zoe;
    reply: SFReply;
    totalRead: Longint;
    pnt: Point;
+   prompt: Str255;
+   sfTypes: SFTypeList;
  begin
   inputRefNum := -1;
   totalRead := 0;
   contents := nil;
   SetPt(pnt, 0, 0);
-  SFGetFile(pnt, 'Pick a ZOE file:', nil, -1, nil, nil, reply);
+  SFGetFile(pnt, prompt, nil, -1, sfTypes, nil, reply);
   if not reply.good then
    Halt;
   err := FSOpen(reply.fName, reply.vRefNum, inputRefNum);
