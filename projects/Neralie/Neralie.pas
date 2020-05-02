@@ -123,6 +123,7 @@ program Neralie;
   else
    GetFg := white;
  end;
+
  function GetBg: Pattern;
  begin
   if lightMode then
@@ -264,6 +265,7 @@ program Neralie;
   end;
   HiliteMenu(0);
  end;
+ 
  procedure OnMouseDown (event: EventRecord);
   var
    someWindow: WindowPtr;
