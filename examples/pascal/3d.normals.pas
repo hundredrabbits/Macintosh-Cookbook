@@ -90,8 +90,8 @@ begin
  Roll(Long2Fix(20));
  Pitch(Long2Fix(70)); { roll and pitch the plane }
 
- SetPt3D(pa, FixRatio(20, 1), FixRatio(20, 1), FixRatio(20, 1));
- SetPt3D(pb, FixRatio(-20, 1), FixRatio(-20, 1), FixRatio(-20, 1));
+ SetPt3D(pa, Long2Fix(20), Long2Fix(20), Long2Fix(20));
+ SetPt3D(pb, Long2Fix(-20), Long2Fix(-20), Long2Fix(-20));
  DrawBrick(pa, pb);
 
  MainLoop;
