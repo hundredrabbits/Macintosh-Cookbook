@@ -1,4 +1,4 @@
-program ExperimentModel;
+program ExampleBox;
 
  uses
   FixMath, Graf3D;
@@ -72,11 +72,11 @@ begin
 
 { camera }
  ViewPort(thePort^.portRect);
- LookAt(FixRatio(-100, 1), FixRatio(100, 1), FixRatio(100, 1), FixRatio(-100, 1));
- ViewAngle(FixRatio(20, 1));
+ LookAt(Long2Fix(-100), Long2Fix(100), Long2Fix(100), Long2Fix(-100));
+ ViewAngle(Long2Fix(20));
  Identity;
- Roll(FixRatio(20, 1));
- Pitch(FixRatio(70, 1)); { roll and pitch the plane }
+ Roll(Long2Fix(20));
+ Pitch(Long2Fix(70)); { roll and pitch the plane }
 
  PaintAxis(10);
 
