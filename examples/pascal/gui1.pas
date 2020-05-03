@@ -16,9 +16,8 @@ program ExampleGui1;
   TextSize(24);
   MoveTo(20, 20);
   DrawString('Hello world!');
-  while (not Button) do
-   begin
-   end;
+  repeat
+  until button;
  end;
 
 begin

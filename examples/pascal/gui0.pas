@@ -4,6 +4,13 @@ program ExampleGui0;
   w: WindowPtr; {A window to draw in}
   r: Rect; {The bounding box of the window}
 
+{>>}
+ procedure MainLoop;
+ begin
+  repeat
+  until button;
+ end;
+
 begin
 
   {Create the window}
@@ -18,8 +25,7 @@ begin
  DrawString('Hello world!');
 
   {Wait for a mouse-click, then stop.}
- while not Button do
-  ;
+ MainLoop;
 
 end.
 

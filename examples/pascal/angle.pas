@@ -8,8 +8,8 @@ begin
  angle := 45;
  length := 100;
 
- ax := 100;
- ay := 100;
+ ax := 50;
+ ay := 50;
 
  t := angle * PI / 180;
  bx := ax + length * cos(t);
