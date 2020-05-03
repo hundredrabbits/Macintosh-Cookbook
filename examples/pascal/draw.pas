@@ -1,7 +1,5 @@
 program ExampleDraw;
 
- const
-  radius = 10;
  var
   cursor, prev: Point;
   isDown: Boolean;
@@ -34,7 +32,7 @@ program ExampleDraw;
       WhenDown;
      until not Button;
     end;
-  until cursor.h > 300;
+  until cursor.h < 0;
  end;
 
 begin
