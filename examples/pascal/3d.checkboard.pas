@@ -34,7 +34,7 @@ program Boxes;
  procedure CreateCube;
  begin
   SetPt3D(shape[1], Long2Fix(20), Long2Fix(20), Long2Fix(20));
-  SetPt3D(shape[2], Long2Fix(20), Long2Fix(20), Long2Fix(-20));
+  SetPt3D(shape[2], Long2Fix(20), Long2Fix(40), Long2Fix(-20));
   SetPt3D(shape[3], Long2Fix(-20), Long2Fix(20), Long2Fix(-20));
   SetPt3D(shape[4], Long2Fix(-20), Long2Fix(20), Long2Fix(20));
 
@@ -73,21 +73,73 @@ program Boxes;
  end;
 
 {>>}
- procedure PaintFace;
+ function Interpolate (a, b, t: Fixed): Fixed;
+ begin
+  Interpolate := a + FixMul(b - a, t);
+ end;
+
+{>>}
+
+ procedure LerpPt (var dest, a, b: Point3D; t: Fixed);
+ begin
+  SetPt3D(dest, Interpolate(a.x, b.x, t), Interpolate(a.y, b.y, t), Interpolate(a.z, b.z, t))
+ end;
+
+{>>}
+ procedure ToPlane (var dest, a, b, c, d: Point3D; col, row, limit: Integer);
+  var
+   top, bottom, left, right, result1, result2: Point3D;
+ begin
+  LerpPt(top, a, b, FixRatio(row, limit));
+  LerpPt(bottom, d, c, FixRatio(row, limit));
+  LerpPt(left, a, d, FixRatio(col, limit));
+  LerpPt(right, b, c, FixRatio(col, limit));
+  LerpPt(result1, top, bottom, FixRatio(col, limit));
+  LerpPt(result2, left, right, FixRatio(row, limit));
+  LerpPt(dest, result1, result2, FixRatio(col, 2));
+ end;
+
+{>>}
+ procedure PaintFace (a, b, c, d: Point3D);
   var
    tempRgn: RgnHandle;
+   row, col: Integer;
+   hpt, vpt, minia, minib, minic, minid: Point3D;
+   x, y, z: Fixed;
+   limit: Integer;
  begin
+
+  limit := 10;
+
   tempRgn := NewRgn;
   OpenRgn;
-  MoveTo3D(shape[1].x, shape[1].Y, shape[1].Z);
-  LineTo3D(shape[2].X, shape[2].Y, shape[2].Z);
-  LineTo3D(shape[3].X, shape[3].Y, shape[3].Z);
-  LineTo3D(shape[4].X, shape[4].Y, shape[4].Z);
-  LineTo3D(shape[1].X, shape[1].Y, shape[1].Z);
+
+  for col := 0 to limit - 1 do
+   begin
+    row := 0;
+    for row := 0 to limit - 1 do
+     begin
+      if ((col + (row mod 2 + 1)) mod 2 = 0) then
+       begin
+       ToPlane(minia, a, b, c, d, row, col, limit);
+       ToPlane(minib, a, b, c, d, row + 1, col, limit);
+       ToPlane(minic, a, b, c, d, row, col + 1, limit);
+       ToPlane(minid, a, b, c, d, row + 1, col + 1, limit);
+       MoveTo3D(minia.x, minia.y, minia.z);
+       LineTo3D(minib.x, minib.y, minib.z);
+       LineTo3D(minid.x, minid.y, minid.z);
+       LineTo3D(minic.x, minic.y, minic.z);
+       LineTo3D(minia.x, minia.y, minia.z);
+       end;
+     end;
+   end;
+
   CloseRgn(tempRgn);
-  FillRgn(tempRgn, gray);
+  PaintRgn(tempRgn);
+  DisposeRgn(tempRgn);
+
  end;
- 
+
 {>>}
  procedure PaintAxis (size: Integer);
  begin
@@ -107,7 +159,7 @@ program Boxes;
  procedure WindowInit;
  begin
   SetRect(r, 100, 50, 300, 250);
-  w := NewWindow(nil, r, 'Study', true, zoomDocProc, WindowPtr(-1), false, 0);
+  w := NewWindow(nil, r, 'Mapping', true, zoomDocProc, WindowPtr(-1), false, 0);
   SetPort(w);
  end;
 
@@ -129,9 +181,10 @@ program Boxes;
   Identity;
   Roll(Long2Fix(hangle));
   Pitch(Long2Fix(vangle)); { roll and pitch the plane }
-  PaintFace;
-  PaintCube;
+
   PaintAxis(10);
+  PaintFace(shape[1], shape[2], shape[3], shape[4]);
+  PaintCube;
  end;
 
 {>>}

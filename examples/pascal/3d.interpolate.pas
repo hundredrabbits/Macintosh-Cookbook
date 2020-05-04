@@ -73,21 +73,30 @@ program Boxes;
  end;
 
 {>>}
- procedure PaintFace;
+ function Interpolate (a, b, t: Fixed): Fixed;
+ begin
+  Interpolate := a + FixMul(b - a, t);
+ end;
+
+{>>}
+
+ procedure LerpPt (var dest, a, b: Point3D; t: Fixed);
+ begin
+  SetPt3D(dest, Interpolate(a.x, b.x, t), Interpolate(a.y, b.y, t), Interpolate(a.z, b.z, t))
+ end;
+
+{>>}
+ procedure PaintFace (a, b, c, d: Point3D);
   var
    tempRgn: RgnHandle;
+   id, row, col, subs: Integer;
+   minia: Point3D;
  begin
-  tempRgn := NewRgn;
-  OpenRgn;
-  MoveTo3D(shape[1].x, shape[1].Y, shape[1].Z);
-  LineTo3D(shape[2].X, shape[2].Y, shape[2].Z);
-  LineTo3D(shape[3].X, shape[3].Y, shape[3].Z);
-  LineTo3D(shape[4].X, shape[4].Y, shape[4].Z);
-  LineTo3D(shape[1].X, shape[1].Y, shape[1].Z);
-  CloseRgn(tempRgn);
-  FillRgn(tempRgn, gray);
+  LerpPt(minia, a, b, FixRatio(2, 4));
+  MoveTo3D(minia.x, minia.y, minia.z);
+  LineTo3D(c.x, c.y, c.z);
  end;
- 
+
 {>>}
  procedure PaintAxis (size: Integer);
  begin
@@ -129,7 +138,7 @@ program Boxes;
   Identity;
   Roll(Long2Fix(hangle));
   Pitch(Long2Fix(vangle)); { roll and pitch the plane }
-  PaintFace;
+  PaintFace(shape[1], shape[2], shape[3], shape[4]);
   PaintCube;
   PaintAxis(10);
  end;
