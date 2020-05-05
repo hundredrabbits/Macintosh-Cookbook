@@ -79,7 +79,13 @@ program Boxes;
  end;
 
 {>>}
+ function HasPixel3D (col, row: Integer): Boolean;
+ begin
+  HasPixel3D := ((col + (row mod 2 + 1)) mod 2 = 0)
+ end;
 
+
+{>>}
  procedure LerpPt (var dest, a, b: Point3D; t: Fixed);
  begin
   SetPt3D(dest, Interpolate(a.x, b.x, t), Interpolate(a.y, b.y, t), Interpolate(a.z, b.z, t))
@@ -119,7 +125,7 @@ program Boxes;
     row := 0;
     for row := 0 to limit - 1 do
      begin
-      if ((col + (row mod 2 + 1)) mod 2 = 0) then
+      if HasPixel3D(col, row) then
        begin
        ToPlane(minia, a, b, c, d, row, col, limit);
        ToPlane(minib, a, b, c, d, row + 1, col, limit);
@@ -232,6 +238,9 @@ begin
  ViewPort(thePort^.portRect);
 
  CreateCube;
+
+ hangle := 145;
+ vangle := 65;
 
  Redraw;
  MainLoop;
